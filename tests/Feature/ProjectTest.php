@@ -6,17 +6,13 @@ use App\Project;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Passport\Passport;
+use Nuwave\Lighthouse\Testing\MakesGraphQLRequests;
 use Tests\TestCase;
 
 class ProjectTest extends TestCase
 {
     use RefreshDatabase;
-
-    public function graphQL($query){
-        return $this->post('/graphql', [
-            'query' => $query
-        ]);
-    }
+    use MakesGraphQLRequests;
 
     /**
      * A basic unit test example.

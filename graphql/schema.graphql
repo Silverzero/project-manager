@@ -29,12 +29,6 @@ type Query {
 
 type Mutation {
 
-    createUser(
-        name:       String!
-        email:      String! @rules(apply: ["email", "unique:users"])
-        password:   String! @bcrypt @rules(apply: ["min:6"])
-    ): User @create
-
     updateUser(
         id:     ID!
         input:  updateUser! @spread
@@ -45,4 +39,3 @@ type Mutation {
     ): User @delete
 
 }
-
