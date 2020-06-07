@@ -1,0 +1,32 @@
+type Project {
+    id      : ID!
+    name    : String!
+    budget  : Float!
+}
+
+input updateProject {
+    name:   String
+    budget: Float
+}
+
+extend type Query {
+    projects: [Project!]! @all
+    project(id: ID @eq): Project @find
+}
+
+extend type Mutation {
+
+    createProject(
+        input:  updateProject! @spread
+    ): Project @create
+
+    updateProject(
+        id:     ID!
+        input:  updateProject! @spread
+    ): Project @update
+
+    deleteProject(
+        id: ID!
+    ): Project @delete
+
+}
